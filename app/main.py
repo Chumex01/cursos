@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.database import engine, Base
 from app import models 
 from app.config import settings
+from app.routers import reportes
 
 # --- CREACIÓN DE TABLAS EN LA BASE DE DATOS ---
 @asynccontextmanager
@@ -28,3 +29,7 @@ app.add_middleware(
 @app.get("/")
 def leer_raiz():
     return {"mensaje": "¡Hola, Mundo! Bienvenido a mi API con FastAPI"}
+
+app.include_router(
+    reportes.router
+)
