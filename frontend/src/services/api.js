@@ -176,3 +176,71 @@ export async function getSesionesDetalle(filters = {}) {
     `/reportes/sesiones/detalle${buildQuery(filters)}`
   )
 }
+
+// ============================================================
+// NEGOCIO - CURSOS
+// ============================================================
+
+export async function getCursosDashboard(filters = {}) {
+  return request(
+    `/reportes/negocio/cursos/dashboard${buildQuery(filters)}`
+  )
+}
+
+
+export async function getCursosFiltros() {
+  return request(
+    "/reportes/negocio/cursos/filtros"
+  )
+}
+
+
+// ============================================================
+// NEGOCIO - SERVICIOS
+// ============================================================
+
+export async function getServiciosDashboard(filters = {}) {
+  return request(
+    `/reportes/negocio/servicios/dashboard${buildQuery(filters)}`
+  )
+}
+
+
+export async function getServiciosFiltros() {
+  return request(
+    "/reportes/negocio/servicios/filtros"
+  )
+}
+
+// ============================================================
+// CURSOS (PÚBLICOS & ESTUDIANTES)
+// ============================================================
+
+export async function getCursos(filters = {}) {
+  return request(`/public/cursos${buildQuery(filters)}`)
+}
+
+export async function getCursoBySlug(slug) {
+  return request(`/public/cursos/${slug}`)
+}
+
+export async function inscribirCursoGratis(idCurso, payload) {
+  return request(`/cursos/${idCurso}/inscribir-gratis`, {
+    method: "POST",
+    body: JSON.stringify(payload)
+  })
+}
+
+export async function procesarCheckout(payload) {
+  return request(`/checkout/procesar`, {
+    method: "POST",
+    body: JSON.stringify(payload)
+  })
+}
+
+export async function actualizarProgresoLeccion(idInscripcion, idLeccion, porcentaje) {
+  return request(`/inscripciones/${idInscripcion}/lecciones/${idLeccion}`, {
+    method: "PUT",
+    body: JSON.stringify({ porcentaje })
+  })
+}
