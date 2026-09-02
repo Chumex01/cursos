@@ -1,8 +1,5 @@
-<script setup>
-import ReportDashboard from "./components/ReportDashboard.vue"
-</script>
-
-
 <template>
-  <ReportDashboard />
+  <div id="app" class="min-h-screen bg-[#0f172a] text-white font-sans">
+    <router-view />
+  </div>
 </template>

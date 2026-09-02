@@ -5,6 +5,8 @@ from app.database import engine, Base
 from app import models 
 from app.config import settings
 from app.routers import reportes
+from app.routers import reportes_negocio
+from app.routers import public
 
 # --- CREACIÓN DE TABLAS EN LA BASE DE DATOS ---
 @asynccontextmanager
@@ -32,4 +34,12 @@ def leer_raiz():
 
 app.include_router(
     reportes.router
+)
+
+app.include_router(
+    reportes_negocio.router
+)
+
+app.include_router(
+    public.router
 )
